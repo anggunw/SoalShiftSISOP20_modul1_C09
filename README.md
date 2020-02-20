@@ -1,6 +1,17 @@
 # SoalShiftSISOP20_modul1_C09
 
-**Soal 1**
+* [Soal 1](http://https://github.com/anggunw/README#soal-1)
+* [Penyelesaian soal 1a](http://https://github.com/anggunw/README#1a.)
+* [Penyelesaian soal 1b](http://https://github.com/anggunw/README#1b.)
+* [Penyelesaian soal 1c](http://https://github.com/anggunw/README#1c.)
+* [Soal 2](http://https://github.com/anggunw/README#soal-2)
+* [Soal 3](http://https://github.com/anggunw/README#soal-3)
+* [Penyelesaian soal 3a](http://https://github.com/anggunw/README#3a.)
+
+
+
+
+## Soal 1
 
 Whits adalah seorang mahasiswa teknik informatika. Dia mendapatkan tugas praktikum untuk membuat laporan berdasarkan data yang ada pada file “Sample-Superstore.tsv”. Namun dia tidak dapat menyelesaikan tugas tersebut. Laporan yang diminta berupa :
 a. Tentukan wilayah bagian (region) mana yang memiliki keuntungan (profit) paling
@@ -14,7 +25,8 @@ laporan tersebut.
 *Gunakan Awk dan Command pendukung
 
 **Penyelesaian**
-a. 
+
+### 1a. 
 ```
 awk 'BEGIN{FS="\t"}
 ```
@@ -40,7 +52,7 @@ END{for(i in arr)
 * print reg > "jawaban1.var" berarti isi variable reg disimpan di file jawaban1.var
 
 
-b.
+### 1b.
 ```
 region=$(cat jawaban1.var)
 ```
@@ -65,7 +77,7 @@ for(i in arr){if(count==2)break;print i > "jawaban2.var";print i,arr[i];count++}
 * Kemudian dilakukan loop untuk mencetak state dengan profit paling sedikit, ketika count/iterasi sudah bernilai 2 maka loop ini dihentikan
 * print i > "jawaban2.var" berarti menyimpan nilai i ke dalam file jawaban2.var
 
-c.
+### 1c.
 ```
 states=$(cat jawaban2.var)
 state1=$(echo $states | cut -f1 -d' ')
@@ -91,16 +103,16 @@ for(i in arr){if(count==10)break;print i,arr[i];count++}};' Sample-Superstore.ts
 Seperti soal 1b, akan tetapi kali ini mencetak hingga 10 kali
 
 
-**Soal 2**
-1. Jalankan soal2_passgen.sh [NAMA_FILE] untuk generate code
+## Soal 2
+### 1. Jalankan soal2_passgen.sh [NAMA_FILE] untuk generate code
    ex :
    $ bash soal2_passgen.sh password
    
-2. Untuk enkripsi nama file jalankan soal2_enkripsi.sh [NAMA_FILE]
+### 2. Untuk enkripsi nama file jalankan soal2_enkripsi.sh [NAMA_FILE]
    ex :
    $ bash soal2_enkripsi.sh password.txt
    
-3. Untuk mengembalikan nama file jalankan soal2_dekripsi.sh [NAMA_FILE_ENC] [JAM_ENC]
+### 3. Untuk mengembalikan nama file jalankan soal2_dekripsi.sh [NAMA_FILE_ENC] [JAM_ENC]
    ex :
    $ bash soal2_dekripsi.sh fqiimeht.txt 16
    
@@ -110,7 +122,8 @@ Seperti soal 1b, akan tetapi kali ini mencetak hingga 10 kali
    - [JAM_ENC] = Waktu File dienkripsi
    
 
-**Soal 3**
+## Soal 3
+
 1 tahun telah berlalu sejak pencampakan hati Kusuma. Akankah sang pujaan hati kembali ke naungan Kusuma? Memang tiada maaf bagi Elen. Tapi apa daya hati yang sudah hancur, Kusuma masih terguncang akan sikap Elen. Melihat kesedihan Kusuma, kalian mencoba menghibur Kusuma dengan mengirimkan gambar kucing. 
 [a] Maka dari itu, kalian mencoba membuat script untuk mendownload 28 gambar dari "https://loremflickr.com/320/240/cat" menggunakan command wget dan menyimpan file dengan nama "pdkt_kusuma_NO" (contoh: pdkt_kusuma_1, pdkt_kusuma_2, pdkt_kusuma_3) serta jangan lupa untuk menyimpan log messages wget kedalam sebuah file "wget.log". Karena kalian gak suka ribet, kalian membuat penjadwalan untuk menjalankan script download gambar tersebut. Namun, script download tersebut hanya berjalan
 [b] setiap 8 jam dimulai dari jam 6.05 setiap hari kecuali hari Sabtu Karena gambar yang didownload dari link tersebut bersifat random, maka ada kemungkinan gambar yang terdownload itu identik. Supaya gambar yang identik tidak dikira Kusuma sebagai spam, maka diperlukan sebuah script untuk memindahkan salah satu gambar identik. Setelah memilah gambar yang identik, maka dihasilkan gambar yang berbeda antara satu dengan yang lain. Gambar yang berbeda tersebut, akan kalian kirim ke Kusuma supaya hatinya kembali ceria. Setelah semua gambar telah dikirim, kalian akan selalu menghibur Kusuma, jadi gambar yang telah terkirim tadi akan kalian simpan kedalam folder /kenangan dan kalian bisa mendownload gambar baru lagi. 
@@ -119,7 +132,7 @@ dengan format filename "duplicate_nomor" (contoh : duplicate_200, duplicate_201)
 *Gunakan Bash, Awk dan Crontab
 
 **Penyelesaian :**
-a.
+### 3a.
 ``` 
 #!/bin/bash
 i=1
