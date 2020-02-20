@@ -1,16 +1,5 @@
 # SoalShiftSISOP20_modul1_C09
 
-* [Soal 1](http://https://github.com/anggunw/README#soal-1)
-* [Penyelesaian soal 1a](http://https://github.com/anggunw/README#1a.)
-* [Penyelesaian soal 1b](http://https://github.com/anggunw/README#1b.)
-* [Penyelesaian soal 1c](http://https://github.com/anggunw/README#1c.)
-* [Soal 2](http://https://github.com/anggunw/README#soal-2)
-* [Soal 3](http://https://github.com/anggunw/README#soal-3)
-* [Penyelesaian soal 3a](http://https://github.com/anggunw/README#3a.)
-
-
-
-
 ## Soal 1
 
 Whits adalah seorang mahasiswa teknik informatika. Dia mendapatkan tugas praktikum untuk membuat laporan berdasarkan data yang ada pada file “Sample-Superstore.tsv”. Namun dia tidak dapat menyelesaikan tugas tersebut. Laporan yang diminta berupa :
