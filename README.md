@@ -130,12 +130,13 @@ nama file bisa kembali.
 #!/bin/bash
 
 arg="$1"
-
+arg=${arg//[^[:alnum:]]/}
 arg=${arg//[0-9]/}
 #echo "$arg"
 cat /dev/urandom| tr -dc 'a-zA-Z0-9'|fold -w 28| head -n 1  >> "$arg".txt
 
 * arg="$1" berarti passgen.sh akan mengambil argumen yang nantinya akan menjadi nama file
+* arg=${arg//[^[:alnum:]]/} berarti argumen akan cek apakah ada karakter spesial, jika ada akan dihapus
 * arg=${arg//[0-9]/} berarti argumen akan dicek apakah ada angka atau tidak, jika ada maka akan dihapus
 * cat /dev/urandom| tr -dc 'a-zA-Z0-9'|fold -w 28| head -n 1  >> "$arg".txt berarti akan membuat password acak yang nantinya akan disimpan dalam txt dengan nama dari argumen yang dimasukkan
 
