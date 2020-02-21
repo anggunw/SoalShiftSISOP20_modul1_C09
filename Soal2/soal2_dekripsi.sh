@@ -5,7 +5,7 @@ hour="$2"
 
 txt="$1"
 ori="$txt"
-txt=${txt/txt}
+txt=${txt/.txt}
 encrypt='[A-Z]'
 
 
@@ -86,7 +86,7 @@ encrypt='[x-za-w]'
 esac
 
 ren=$( echo "$txt" | tr "$encrypt" '[a-z]' )
-ren="${ren}txt"
+ren="${ren}.txt"
 
 mv "$1" "$ren"
 
