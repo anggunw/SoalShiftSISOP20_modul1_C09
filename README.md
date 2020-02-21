@@ -11,9 +11,8 @@
    - [Penyelesaian 2c](#2c)
       
 * [Soal 3](#soal3)
-   - [Penyelesaian 3a](#3a)
-   - [Penyelesaian 3b](#3b)
-   - [Penyelesaian 3c](#3c)
+   - [Penyelesaian 3](#3)
+   - [Penyelesaian cron](#cron)
 
 
 ## Soal 1 <a name="soal1"></a>
@@ -127,24 +126,219 @@ seterusnya. Apabila melebihi z, akan kembali ke a, contoh: huruf w dengan jam 5.
 maka akan menjadi huruf b.) dan (d) jangan lupa untuk membuat dekripsinya supaya
 nama file bisa kembali.
 
+**Penyelesaian :**
+### 2. <a name="2a"></a>
+#!/bin/bash
 
-### 1. Jalankan soal2_passgen.sh [NAMA_FILE] untuk generate code <a name="2a"></a>
-   ex :
-   $ bash soal2_passgen.sh password
+arg="$1"
+
+arg=${arg//[0-9]/}
+#echo "$arg"
+cat /dev/urandom| tr -dc 'a-zA-Z0-9'|fold -w 28| head -n 1  >> "$arg".txt
+
+* arg="$1" berarti passgen.sh akan mengambil argumen yang nantinya akan menjadi nama file
+* arg=${arg//[0-9]/} berarti argumen akan dicek apakah ada angka atau tidak, jika ada maka akan dihapus
+* cat /dev/urandom| tr -dc 'a-zA-Z0-9'|fold -w 28| head -n 1  >> "$arg".txt berarti akan membuat password acak yang nantinya akan disimpan dalam txt dengan nama dari argumen yang dimasukkan
+
+
+### 2. <a name="2b"></a>
+#!/bin/bash
+
+echo "$1"
+hour=$(date +%H)
+
+txt="$1"
+txt=${txt/txt}
+encrypt='[a-z]'
+
+echo "Jam di enkripsi : $hour"
+
+case "$hour" in
+"0")
+encrypt='[a-z]'
+;;
+"1")
+encrypt='[b-za]'
+;;
+"2")
+encrypt='[c-za-b]'
+;;
+"3")
+encrypt='[d-za-c]'
+;;
+"4")
+encrypt='[e-za-d]'
+;;
+"5")
+encrypt='[f-za-e]'
+;;
+"6")
+encrypt='[g-za-f]'
+;;
+"7")
+encrypt='[h-za-g]'
+;;
+"8")
+encrypt='[i-za-h]'
+;;
+"9")
+encrypt='[j-za-i]'
+;;
+"10")
+encrypt='[k-za-j]'
+;;
+"11")
+encrypt='[l-za-k]'
+;;
+"12")
+encrypt='[m-za-l]'
+;;
+"13")
+encrypt='[n-za-m]'
+;;
+"14")
+encrypt='[o-za-n]'
+;;
+"15")
+encrypt='[p-za-o]'
+;;
+"16")
+encrypt='[q-za-p]'
+;;
+"17")
+encrypt='[r-za-q]'
+;;
+"18")
+encrypt='[s-za-r]'
+;;
+"19")
+encrypt='[t-za-s]'
+;;
+"20")
+encrypt='[u-za-t]'
+;;
+"21")
+encrypt='[v-za-u]'
+;;
+"22")
+encrypt='[w-za-v]'
+;;
+"23")
+encrypt='[x-za-w]'
+;;
+
+esac
+
+ren=$( echo "$txt" | tr '[a-z]' "$encrypt" )
+ren="${ren}txt"
+
+mv "$1" "$ren"
+
+* hour=$(date +%H) berarti nanti hour akan bernilai angka dari jam sekarang
+* txt="$1" berarti txt akan berisi argumen pertama yang dimasukkan
+* txt=${txt/txt} berarti txt akan menghapus file jika ada nama txt
+* case "$hour" in berarti encrypt akan bergantung pada nilai hour
+* ren=$( echo "$txt" | tr '[a-z]' "$encrypt" ) berarti ren akan memulai enkripsi
+* ren="${ren}txt" berarti ren akan menambahkan file txt diakhir
+* mv "$1" "$ren" berarti nama file yang dimasukkan pada argumen akan diganti dengan isi ren
+
+### 2. <a name="2c"></a>
+#!/bin/bash
+
+echo "$1"
+hour="$2"
+
+txt="$1"
+ori="$txt"
+txt=${txt/txt}
+encrypt='[A-Z]'
+
+
+case "$hour" in
+"0")
+encrypt='[a-z]'
+;;
+"1")
+encrypt='[b-za]'
+;;
+"2")
+encrypt='[c-za-b]'
+;;
+"3")
+encrypt='[d-za-c]'
+;;
+"4")
+encrypt='[e-za-d]'
+;;
+"5")
+encrypt='[f-za-e]'
+;;
+"6")
+encrypt='[g-za-f]'
+;;
+"7")
+encrypt='[h-za-g]'
+;;
+"8")
+encrypt='[i-za-h]'
+;;
+"9")
+encrypt='[j-za-i]'
+;;
+"10")
+encrypt='[k-za-j]'
+;;
+"11")
+encrypt='[l-za-k]'
+;;
+"12")
+encrypt='[m-za-l]'
+;;
+"13")
+encrypt='[n-za-m]'
+;;
+"14")
+encrypt='[o-za-n]'
+;;
+"15")
+encrypt='[p-za-o]'
+;;
+"16")
+encrypt='[q-za-p]'
+;;
+"17")
+encrypt='[r-za-q]'
+;;
+"18")
+encrypt='[s-za-r]'
+;;
+"19")
+encrypt='[t-za-s]'
+;;
+"20")
+encrypt='[u-za-t]'
+;;
+"21")
+encrypt='[v-za-u]'
+;;
+"22")
+encrypt='[w-za-v]'
+;;
+"23")
+encrypt='[x-za-w]'
+;;
+
+esac
+
+ren=$( echo "$txt" | tr "$encrypt" '[a-z]' )
+ren="${ren}txt"
+
+mv "$1" "$ren"
    
-### 2. Untuk enkripsi nama file jalankan soal2_enkripsi.sh [NAMA_FILE] <a name="2b"></a>
-   ex :
-   $ bash soal2_enkripsi.sh password.txt
-   
-### 3. Untuk mengembalikan nama file jalankan soal2_dekripsi.sh [NAMA_FILE_ENC] [JAM_ENC] <a name="2c"></a>
-   ex :
-   $ bash soal2_dekripsi.sh fqiimeht.txt 16
-   
-   Catatan :
-   - [NAMA_FILE] = Nama File yang ingin dienkripsi
-   - [NAMA_FILE_ENC] = Nama File yang telah dienkripsi
-   - [JAM_ENC] = Waktu File dienkripsi
-   
+* hour="$2" berarti nilai hour akan dimasukkan pada argumen ke 2
+* ren=$( echo "$txt" | tr "$encrypt" '[a-z]' ) berarti akan menerjemahkan nama file yang ditaruh pada ren
+* mv "$1" "$ren" berarti nama file yang dimasukkan pada argumen akan diganti dengan isi ren
+
 
 ## Soal 3 <a name="soal3"></a>
 
@@ -156,11 +350,11 @@ dengan format filename "duplicate_nomor" (contoh : duplicate_200, duplicate_201)
 *Gunakan Bash, Awk dan Crontab
 
 **Penyelesaian :**
-### 3a. <a name="3a"></a>
+### 3. <a name="3"></a>
 ``` 
 #!/bin/bash
 
-#3A
+#3a
 a=1
 while [[ $a -lt 29 ]]
 do
@@ -227,7 +421,9 @@ mv "location.log" "location.log.bak"
 * mv "pdkt_kusuma_"$j""  "duplicate_"$d"" berarti jika file sama maka file $j mengganti nama jadi duplicate_$d
 * mv "duplicate_"$d"" duplicate untuk memindahkan ke directory duplicate setelah ganti nama
 * d=$((d+1)) berarti setiap kali ada file yang sama var d akan melakukan increnment
-                                
+
+**Penyelesaian :**
+### Crontab. <a name="cron"></a>
 ###Crontab
 5 6-23/8 * * 0-5 /bin/bash  /home/farrelmt/N3/3.sh
 
