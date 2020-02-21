@@ -127,6 +127,7 @@ nama file bisa kembali.
 
 **Penyelesaian :**
 ### 2.A <a name="2a"></a>
+```
 #!/bin/bash
 
 arg="$1"
@@ -134,7 +135,7 @@ arg=${arg//[^[:alnum:]]/}
 arg=${arg//[0-9]/}
 #echo "$arg"
 cat /dev/urandom| tr -dc 'a-zA-Z0-9'|fold -w 28| head -n 1  >> "$arg".txt
-
+```
 * arg="$1" berarti passgen.sh akan mengambil argumen yang nantinya akan menjadi nama file
 * arg=${arg//[^[:alnum:]]/} berarti argumen akan cek apakah ada karakter spesial, jika ada akan dihapus
 * arg=${arg//[0-9]/} berarti argumen akan dicek apakah ada angka atau tidak, jika ada maka akan dihapus
@@ -142,6 +143,7 @@ cat /dev/urandom| tr -dc 'a-zA-Z0-9'|fold -w 28| head -n 1  >> "$arg".txt
 
 
 ### 2.B <a name="2b"></a>
+```
 #!/bin/bash
 
 echo "$1"
@@ -172,7 +174,7 @@ ren=$( echo "$txt" | tr '[a-z]' "$encrypt" )
 ren="${ren}txt"
 
 mv "$1" "$ren"
-
+```
 * hour=$(date +%H) berarti nanti hour akan bernilai angka dari jam sekarang
 * txt="$1" berarti txt akan berisi argumen pertama yang dimasukkan
 * txt=${txt/txt} berarti txt akan menghapus file jika ada nama txt
@@ -182,6 +184,7 @@ mv "$1" "$ren"
 * mv "$1" "$ren" berarti nama file yang dimasukkan pada argumen akan diganti dengan isi ren
 
 ### 2.C <a name="2c"></a>
+```
 #!/bin/bash
 
 echo "$1"
@@ -213,7 +216,7 @@ ren=$( echo "$txt" | tr "$encrypt" '[a-z]' )
 ren="${ren}.txt"
 
 mv "$1" "$ren"
-   
+```   
 * hour="$2" berarti nilai hour akan dimasukkan pada argumen ke 2
 * ren=$( echo "$txt" | tr "$encrypt" '[a-z]' ) berarti akan menerjemahkan nama file yang ditaruh pada ren
 * mv "$1" "$ren" berarti nama file yang dimasukkan pada argumen akan diganti dengan isi ren
@@ -285,7 +288,7 @@ fi
 
 mv "wget.log" "wget.log.bak"
 mv "location.log" "location.log.bak"
-
+```
 * while $i -lt 29 berarti melakukan loop sebanyak 28 kali
 * wget -O berarti mendownload dari loremflickr.com/320/240/cat dan menyimpannya dengan nama pdkt_kusuma_$i 
 * -a wget.log menyimpan log messages dari wget ke file wget.log
@@ -303,7 +306,7 @@ mv "location.log" "location.log.bak"
 
 **Penyelesaian :**
 ### Crontab.
-
+```
 5 6-23/8 * * 0-5 /bin/bash  /home/farrelmt/N3/3.sh
-
+```
 *berarti setiap 8 jam pada jam 06.05 di hari Minggu - Jumat akan menjalankan bash yang berada di directory /home/farrelmt/N3/
