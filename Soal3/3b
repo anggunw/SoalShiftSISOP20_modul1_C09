@@ -1,5 +1,4 @@
 #Nomor 3b
 #Crontab
 
-5 6-23/8 * * 0-5 /bin/bash  /home/farrelmt/N3/3a.sh
-5 6-23/8 * * 0-5 /bin/bash  /home/farrelmt/N3/3c.sh
+5 6-23/8 * * 0-5 /bin/bash  /home/farrelmt/N3/3.sh
