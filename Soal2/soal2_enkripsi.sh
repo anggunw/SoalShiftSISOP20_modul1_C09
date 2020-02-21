@@ -5,7 +5,7 @@ hour=$(date +%H)
 
 txt="$1"
 ori="$txt"
-txt=${txt/txt}
+txt=${txt/.txt}
 encrypt='[a-z]'
 
 echo "Jam di enkripsi : $hour"
@@ -87,7 +87,7 @@ encrypt='[x-za-w]'
 esac
 
 ren=$( echo "$txt" | tr '[a-z]' "$encrypt" )
-ren="${ren}txt"
+ren="${ren}.txt"
 
 mv "$1" "$ren"
 
