@@ -109,6 +109,25 @@ Seperti soal 1b, akan tetapi kali ini mencetak hingga 10 kali
 
 
 ## Soal 2 <a name="soal2"></a>
+Pada suatu siang, laptop Randolf dan Afairuzr dibajak oleh seseorang dan kehilangan
+data-data penting. Untuk mencegah kejadian yang sama terulang kembali mereka
+meminta bantuan kepada Whits karena dia adalah seorang yang punya banyak ide.
+Whits memikirkan sebuah ide namun dia meminta bantuan kalian kembali agar ide
+tersebut cepat diselesaikan. Idenya adalah kalian (a) membuat sebuah script bash yang
+dapat menghasilkan password secara acak sebanyak 28 karakter yang terdapat huruf
+besar, huruf kecil, dan angka. (b) Password acak tersebut disimpan pada file berekstensi
+.txt dengan nama berdasarkan argumen yang diinputkan dan HANYA berupa alphabet.
+(c) Kemudian supaya file .txt tersebut tidak mudah diketahui maka nama filenya akan di
+enkripsi dengan menggunakan konversi huruf (string manipulation) yang disesuaikan
+dengan jam(0-23) dibuatnya file tersebut dengan program terpisah dengan (misal:
+password.txt dibuat pada jam 01.28 maka namanya berubah menjadi qbttxpse.txt
+dengan perintah ‘bash soal2_enkripsi.sh password.txt’. Karena p adalah huruf ke 16 dan
+file dibuat pada jam 1 maka 16+1=17 dan huruf ke 17 adalah q dan begitu pula
+seterusnya. Apabila melebihi z, akan kembali ke a, contoh: huruf w dengan jam 5.28,
+maka akan menjadi huruf b.) dan (d) jangan lupa untuk membuat dekripsinya supaya
+nama file bisa kembali.
+
+
 ### 1. Jalankan soal2_passgen.sh [NAMA_FILE] untuk generate code <a name="2a"></a>
    ex :
    $ bash soal2_passgen.sh password
@@ -140,18 +159,76 @@ dengan format filename "duplicate_nomor" (contoh : duplicate_200, duplicate_201)
 ### 3a. <a name="3a"></a>
 ``` 
 #!/bin/bash
-i=1
-while [[ $i -lt 29 ]]
+
+#3A
+a=1
+while [[ $a -lt 29 ]]
 do
- wget -O pdkt_kusuma_$i loremflickr.com/320/240/cat -a wget.log
- #echo $i
- i=$((i + 1))
+ wget -O pdkt_kusuma_$a loremflickr.com/320/240/cat -a wget.log
+ #echo $a
+ a=$((a + 1))
 done
 grep 'Location' wget.log > location.log
-```
+
+mkdir duplicate
+mkdir kenangan
+echo "Download Selesai"
+
+a=0
+
+if [ $a -eq 0 ]
+then
+        echo "Filter"
+        #3C
+        d=1
+        k=1
+        dir=$(pwd)
+
+        for ((i=1; i<=28; i++))
+        do
+                for((j=1; j<=28; j++))
+                do
+                        if [ $i -eq $j ]
+                        then
+                                z=1
+                        elif  cmp -s "pdkt_kusuma_"$i"" "pdkt_kusuma_"$j"" ;
+                        then
+                                mv "pdkt_kusuma_"$j""  "duplicate_"$d""
+                                mv "duplicate_"$d"" duplicate
+                                d=$((d+1))
+                        else
+                        z=0
+                        fi
+                done
+
+                if [ -f "pdkt_kusuma_"$i"" ]
+                then
+                        mv "pdkt_kusuma_"$i"" "kenangan_"$k
+                        mv "kenangan_"$k"" kenangan
+                        k=$((k+1))
+                fi
+        done
+fi
+
+mv "wget.log" "wget.log.bak"
+mv "location.log" "location.log.bak"
+
 * while $i -lt 29 berarti melakukan loop sebanyak 28 kali
 * wget -O berarti mendownload dari loremflickr.com/320/240/cat dan menyimpannya dengan nama pdkt_kusuma_$i 
 * -a wget.log menyimpan log messages dari wget ke file wget.log
 * i=$((i+1)) berarti increment i
 * grep 'Location' wget.log > location.log berarti mencari kata 'Location' dalam tiap baris di wget.log dan menyimpannya di location.log
+* mkdir berarti untuk membuat directory baru yaitu directory duplicate dan directory kenangan
+* a=0 digunakan untuk menandakan bahwa download telah selesai dan lanjut ke tahap filter
+* dir=$(pwd) berarti var dir berisi lokasi current directory saat ini
+* for ((i=1; i<=28; i++)) dan for((j=1; j<=28; j++)) digunakan untuk melakukan looping pengecekan
+* if [ $i -eq $j ] digunakan agar file tidak compare file dengan nomor yang sama
+* cmp -s "pdkt_kusuma_"$i"" "pdkt_kusuma_"$j"" berarti membandingkan apakah file $i sama dengan $j atau tidak
+* mv "pdkt_kusuma_"$j""  "duplicate_"$d"" berarti jika file sama maka file $j mengganti nama jadi duplicate_$d
+* mv "duplicate_"$d"" duplicate untuk memindahkan ke directory duplicate setelah ganti nama
+* d=$((d+1)) berarti setiap kali ada file yang sama var d akan melakukan increnment
+                                
+###Crontab
+5 6-23/8 * * 0-5 /bin/bash  /home/farrelmt/N3/3.sh
 
+*berarti setiap 8 jam pada jam 06.05 di hari Minggu - Jumat akan menjalankan bash yang berada di directory /home/farrelmt/N3/
