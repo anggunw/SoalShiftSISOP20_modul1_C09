@@ -1,28 +1,19 @@
 # SoalShiftSISOP20_modul1_C09
 
-1. [Soal 1](#soal1)
-
-      a. [Penyelesaian 1a](#1a)
+* [Soal 1](#soal1)
+   - [Penyelesaian 1a](#1a)
+   - [Penyelesaian 1b](#1b)
+   - [Penyelesaian 1c](#1c)
       
-      b. [Penyelesaian 1b](#1b)
+* [Soal 2](#soal2)
+   - [Penyelesaian 2a](#2a)
+   - [Penyelesaian 2b](#2b)
+   - [Penyelesaian 2c](#2c)
       
-      c. [Penyelesaian 1c](#1c)
-      
-2. [Soal 2](#soal2)
-
-      a. [Penyelesaian 2a](#2a)
-      
-      b. [Penyelesaian 2b](#2b)
-      
-      c. [Penyelesaian 2c](#2c)
-      
-3. [Soal 3](#soal3)
-
-      a. [Penyelesaian 3a](#3a)
-      
-      b. [Penyelesaian 3b](#3b)
-      
-      c. [Penyelesaian 3c](#3c)
+* [Soal 3](#soal3)
+   - [Penyelesaian 3a](#3a)
+   - [Penyelesaian 3b](#3b)
+   - [Penyelesaian 3c](#3c)
 
 
 ## Soal 1 <a name="soal1"></a>
