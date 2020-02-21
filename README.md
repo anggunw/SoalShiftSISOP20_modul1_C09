@@ -148,7 +148,7 @@ echo "$1"
 hour=$(date +%H)
 
 txt="$1"
-txt=${txt/txt}
+txt=${txt/.txt}
 encrypt='[a-z]'
 
 echo "Jam di enkripsi : $hour"
@@ -178,7 +178,7 @@ mv "$1" "$ren"
 * txt=${txt/txt} berarti txt akan menghapus file jika ada nama txt
 * case "$hour" in berarti encrypt akan bergantung pada nilai hour
 * ren=$( echo "$txt" | tr '[a-z]' "$encrypt" ) berarti ren akan memulai enkripsi
-* ren="${ren}txt" berarti ren akan menambahkan file txt diakhir
+* ren="${ren}.txt" berarti ren akan menambahkan file txt diakhir
 * mv "$1" "$ren" berarti nama file yang dimasukkan pada argumen akan diganti dengan isi ren
 
 ### 2.C <a name="2c"></a>
@@ -189,7 +189,7 @@ hour="$2"
 
 txt="$1"
 ori="$txt"
-txt=${txt/txt}
+txt=${txt/.txt}
 encrypt='[A-Z]'
 
 
@@ -210,7 +210,7 @@ encrypt='[x-za-w]'
 esac
 
 ren=$( echo "$txt" | tr "$encrypt" '[a-z]' )
-ren="${ren}txt"
+ren="${ren}.txt"
 
 mv "$1" "$ren"
    
