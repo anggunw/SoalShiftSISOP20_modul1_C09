@@ -12,7 +12,6 @@
       
 * [Soal 3](#soal3)
    - [Penyelesaian 3](#3)
-   - [Penyelesaian cron](#cron)
 
 
 ## Soal 1 <a name="soal1"></a>
@@ -127,7 +126,7 @@ maka akan menjadi huruf b.) dan (d) jangan lupa untuk membuat dekripsinya supaya
 nama file bisa kembali.
 
 **Penyelesaian :**
-### 2. <a name="2a"></a>
+### 2.A <a name="2a"></a>
 #!/bin/bash
 
 arg="$1"
@@ -141,7 +140,7 @@ cat /dev/urandom| tr -dc 'a-zA-Z0-9'|fold -w 28| head -n 1  >> "$arg".txt
 * cat /dev/urandom| tr -dc 'a-zA-Z0-9'|fold -w 28| head -n 1  >> "$arg".txt berarti akan membuat password acak yang nantinya akan disimpan dalam txt dengan nama dari argumen yang dimasukkan
 
 
-### 2. <a name="2b"></a>
+### 2.B <a name="2b"></a>
 #!/bin/bash
 
 echo "$1"
@@ -159,70 +158,9 @@ encrypt='[a-z]'
 ;;
 "1")
 encrypt='[b-za]'
-;;
-"2")
-encrypt='[c-za-b]'
-;;
-"3")
-encrypt='[d-za-c]'
-;;
-"4")
-encrypt='[e-za-d]'
-;;
-"5")
-encrypt='[f-za-e]'
-;;
-"6")
-encrypt='[g-za-f]'
-;;
-"7")
-encrypt='[h-za-g]'
-;;
-"8")
-encrypt='[i-za-h]'
-;;
-"9")
-encrypt='[j-za-i]'
-;;
-"10")
-encrypt='[k-za-j]'
-;;
-"11")
-encrypt='[l-za-k]'
-;;
-"12")
-encrypt='[m-za-l]'
-;;
-"13")
-encrypt='[n-za-m]'
-;;
-"14")
-encrypt='[o-za-n]'
-;;
-"15")
-encrypt='[p-za-o]'
-;;
-"16")
-encrypt='[q-za-p]'
-;;
-"17")
-encrypt='[r-za-q]'
-;;
-"18")
-encrypt='[s-za-r]'
-;;
-"19")
-encrypt='[t-za-s]'
-;;
-"20")
-encrypt='[u-za-t]'
-;;
-"21")
-encrypt='[v-za-u]'
-;;
-"22")
-encrypt='[w-za-v]'
-;;
+
+......
+
 "23")
 encrypt='[x-za-w]'
 ;;
@@ -242,7 +180,7 @@ mv "$1" "$ren"
 * ren="${ren}txt" berarti ren akan menambahkan file txt diakhir
 * mv "$1" "$ren" berarti nama file yang dimasukkan pada argumen akan diganti dengan isi ren
 
-### 2. <a name="2c"></a>
+### 2.C <a name="2c"></a>
 #!/bin/bash
 
 echo "$1"
@@ -261,69 +199,9 @@ encrypt='[a-z]'
 "1")
 encrypt='[b-za]'
 ;;
-"2")
-encrypt='[c-za-b]'
-;;
-"3")
-encrypt='[d-za-c]'
-;;
-"4")
-encrypt='[e-za-d]'
-;;
-"5")
-encrypt='[f-za-e]'
-;;
-"6")
-encrypt='[g-za-f]'
-;;
-"7")
-encrypt='[h-za-g]'
-;;
-"8")
-encrypt='[i-za-h]'
-;;
-"9")
-encrypt='[j-za-i]'
-;;
-"10")
-encrypt='[k-za-j]'
-;;
-"11")
-encrypt='[l-za-k]'
-;;
-"12")
-encrypt='[m-za-l]'
-;;
-"13")
-encrypt='[n-za-m]'
-;;
-"14")
-encrypt='[o-za-n]'
-;;
-"15")
-encrypt='[p-za-o]'
-;;
-"16")
-encrypt='[q-za-p]'
-;;
-"17")
-encrypt='[r-za-q]'
-;;
-"18")
-encrypt='[s-za-r]'
-;;
-"19")
-encrypt='[t-za-s]'
-;;
-"20")
-encrypt='[u-za-t]'
-;;
-"21")
-encrypt='[v-za-u]'
-;;
-"22")
-encrypt='[w-za-v]'
-;;
+
+....
+
 "23")
 encrypt='[x-za-w]'
 ;;
@@ -423,8 +301,8 @@ mv "location.log" "location.log.bak"
 * d=$((d+1)) berarti setiap kali ada file yang sama var d akan melakukan increnment
 
 **Penyelesaian :**
-### Crontab. <a name="cron"></a>
-###Crontab
+### Crontab.
+
 5 6-23/8 * * 0-5 /bin/bash  /home/farrelmt/N3/3.sh
 
 *berarti setiap 8 jam pada jam 06.05 di hari Minggu - Jumat akan menjalankan bash yang berada di directory /home/farrelmt/N3/
