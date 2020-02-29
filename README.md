@@ -105,6 +105,11 @@ for(i in arr){if(count==10)break;print i,arr[i];count++}};' Sample-Superstore.ts
 ```
 Seperti soal 1b, akan tetapi kali ini mencetak hingga 10 kali
 
+Screenshot jawaban soal 1
+<p align="center">
+  <img src="https://imgur.com/pxh4tc5.png" width="350" title="1">
+</p>
+
 
 ## Soal 2 <a name="soal2"></a>
 Pada suatu siang, laptop Randolf dan Afairuzr dibajak oleh seseorang dan kehilangan
@@ -140,6 +145,11 @@ cat /dev/urandom| tr -dc 'a-zA-Z0-9'|fold -w 28| head -n 1  >> "$arg".txt
 * arg=${arg//[^[:alnum:]]/} berarti argumen akan cek apakah ada karakter spesial, jika ada akan dihapus
 * arg=${arg//[0-9]/} berarti argumen akan dicek apakah ada angka atau tidak, jika ada maka akan dihapus
 * cat /dev/urandom| tr -dc 'a-zA-Z0-9'|fold -w 28| head -n 1  >> "$arg".txt berarti akan membuat password acak yang nantinya akan disimpan dalam txt dengan nama dari argumen yang dimasukkan
+
+Screenshot passgen
+<p align="center">
+  <img src="https://imgur.com/V2Rp1Rm.png" width="350" title="2">
+</p>
 
 
 ### 2.Enkripsi <a name="enkripsi"></a>
@@ -183,6 +193,11 @@ mv "$1" "$ren"
 * ren="${ren}.txt" berarti ren akan menambahkan file txt diakhir
 * mv "$1" "$ren" berarti nama file yang dimasukkan pada argumen akan diganti dengan isi ren
 
+Screenshot enkripsi
+<p align="center">
+  <img src="https://imgur.com/tTv3ZkH.png" width="350" title="2">
+</p>
+
 ### 2.Dekripsi <a name="dekripsi"></a>
 ```
 #!/bin/bash
@@ -220,6 +235,11 @@ mv "$1" "$ren"
 * hour="$2" berarti nilai hour akan dimasukkan pada argumen ke 2
 * ren=$( echo "$txt" | tr "$encrypt" '[a-z]' ) berarti akan menerjemahkan nama file yang ditaruh pada ren
 * mv "$1" "$ren" berarti nama file yang dimasukkan pada argumen akan diganti dengan isi ren
+
+Screenshot dekripsi
+<p align="center">
+  <img src="https://imgur.com/lcB8GvQ.png" width="350" title="2">
+</p>
 
 
 ## Soal 3 <a name="soal3"></a>
@@ -310,3 +330,35 @@ mv "location.log" "location.log.bak"
 5 6-23/8 * * 0-5 /bin/bash  /home/farrelmt/N3/3.sh
 ```
 *berarti setiap 8 jam pada jam 06.05 di hari Minggu - Jumat akan menjalankan bash yang berada di directory /home/farrelmt/N3/
+
+Screenshot penyelesaian nomor 3
+<p align="center">
+  <img src="https://imgur.com/W3zch9d.png" width="350">
+</p>
+
+<p align="center">
+  <img src="https://imgur.com/Y04YsDx.png" width="350">
+</p>
+
+Isi file duplicate
+<p align="center">
+  <img src="https://imgur.com/B9U4Vsz.png" width="350">
+</p>
+
+
+Isi file kenangan
+<p align="center">
+  <img src="https://imgur.com/bHnTRXQ.png" width="350">
+</p>
+
+
+Isi wget.log.bak
+<p align="center">
+  <img src="https://imgur.com/iLGVACU.png" width="350">
+</p>
+
+
+Isi location.log.bak
+<p align="center">
+  <img src="https://imgur.com/tBJP6zs.png" width="350">
+</p>
