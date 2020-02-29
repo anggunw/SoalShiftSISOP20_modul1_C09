@@ -6,9 +6,9 @@
    - [Penyelesaian 1c](#1c)
       
 * [Soal 2](#soal2)
-   - [Penyelesaian 2a](#2a)
-   - [Penyelesaian 2b](#2b)
-   - [Penyelesaian 2c](#2c)
+   - [Penyelesaian 2 - Passgen](#passgen)
+   - [Penyelesaian 2 - Enkripsi](#enkripsi)
+   - [Penyelesaian 2 - Dekripsi](#dekripsi)
       
 * [Soal 3](#soal3)
    - [Penyelesaian 3](#3)
@@ -126,7 +126,7 @@ maka akan menjadi huruf b.) dan (d) jangan lupa untuk membuat dekripsinya supaya
 nama file bisa kembali.
 
 **Penyelesaian :**
-### 2.A <a name="2a"></a>
+### 2.Passgen <a name="passgen"></a>
 ```
 #!/bin/bash
 
@@ -142,7 +142,7 @@ cat /dev/urandom| tr -dc 'a-zA-Z0-9'|fold -w 28| head -n 1  >> "$arg".txt
 * cat /dev/urandom| tr -dc 'a-zA-Z0-9'|fold -w 28| head -n 1  >> "$arg".txt berarti akan membuat password acak yang nantinya akan disimpan dalam txt dengan nama dari argumen yang dimasukkan
 
 
-### 2.B <a name="2b"></a>
+### 2.Enkripsi <a name="enkripsi"></a>
 ```
 #!/bin/bash
 
@@ -183,7 +183,7 @@ mv "$1" "$ren"
 * ren="${ren}.txt" berarti ren akan menambahkan file txt diakhir
 * mv "$1" "$ren" berarti nama file yang dimasukkan pada argumen akan diganti dengan isi ren
 
-### 2.C <a name="2c"></a>
+### 2.Dekripsi <a name="dekripsi"></a>
 ```
 #!/bin/bash
 
